@@ -1,24 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Display} from "./Dispaly";
+import {Button} from "./Button";
 
 function App() {
+  const [state, setState] = useState<number>(0);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Display value={state}/>
+      <div className="buttonBlock">
+        <Button
+                className={state>=5 ? 'btn btnDisabled' : 'btn'}
+          title='inc'
+                onClick={() => {
+                  setState(state + 1)
+                }}/>
+
+        <Button className='btn'
+          title='reset'
+                onClick={() => {
+                  setState(0)
+                }}/>
+      </div>
     </div>
   );
 }
