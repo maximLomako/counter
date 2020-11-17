@@ -1,0 +1,16 @@
+.display {
+    width: 80%;
+    height: 200px;
+    background: cyan;
+    margin-bottom: 24px;
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 54px;
+    color: slategrey;
+}
+
+.displayRed{
+    background: tomato;
+}

@@ -1,28 +1,27 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Display} from "./Dispaly";
-import {Button} from "./Button";
+import Counter from "./Components/Counter/Counter";
+import Settings from './Components/Settings/Settings';
+
 
 function App() {
-  const [state, setState] = useState<number>(0);
+  const [counterValue, setCounterValue] = useState<number>(0);
+
+  const changeCounterValue = () => {
+    setCounterValue(counterValue + 1)
+  }
+
+  const resetCounterValue = () => {
+    setCounterValue(0)
+  }
+
   return (
     <div className="App">
-      <Display value={state}/>
-      <div className="buttonBlock">
-        <Button
-                className={state>=5 ? 'btn btnDisabled' : 'btn'}
-          title='inc'
-                onClick={() => {
-                  setState(state + 1)
-                }}/>
-
-        <Button className='btn'
-          title='reset'
-                onClick={() => {
-                  setState(0)
-                }}/>
-      </div>
+      {/*<Counter counterValue={counterValue}*/}
+      {/*         changeCounterValue={changeCounterValue}*/}
+      {/*         resetCounterValue={resetCounterValue}*/}
+      {/*/>*/}
+      <Settings />
     </div>
   );
 }
