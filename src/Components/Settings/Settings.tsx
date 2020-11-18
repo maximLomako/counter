@@ -10,6 +10,7 @@ type SettingsPropsType = {
   changeCounterValue: () => void
   resetCounterValue: () => void
   callSettingsMenu: () => void
+  callCounter: () => void
   changeCounterMinValue: (value: number) => void
   changeCounterMaxValue: (value: number) => void
 }
@@ -29,7 +30,7 @@ const Settings: React.FC<SettingsPropsType> = (props) => {
               counterMaxValue={props.counterMaxValue}
               className={s.btn}
               onClick={() => {
-                console.log(1)
+                props.callCounter();
               }}/>
     </div>
   )

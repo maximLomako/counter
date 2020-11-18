@@ -1,14 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import './App.css';
 import Counter from "./Components/Counter/Counter";
 import Settings from "./Components/Settings/Settings";
-
+import {BrowserRouter, Route, Redirect} from "react-router-dom";
 
 function App() {
 
-  let [counterValue, setCounterValue] = useState(0);
-  let [counterMinValue, setMinValue] = useState(0);
-  let [counterMaxValue, setCounterMaxValue] = useState(5);
+  const getDataFromLocalStorage = (arg: string) => {
+    // @ts-ignore
+    return localStorage.getItem(arg) === null ? 0 : +localStorage.getItem(arg);
+  }
+
+  let [counterMinValue, setMinValue] = useState(getDataFromLocalStorage('counterMinValue'));
+  let [counterMaxValue, setCounterMaxValue] = useState(getDataFromLocalStorage('counterMaxValue'));
+  let [counterValue, setCounterValue] = useState(counterMinValue);
 
 
   const changeCounterValue = () => {
@@ -16,48 +21,58 @@ function App() {
   }
 
   const resetCounterValue = () => {
-    setCounterValue(0)
+    setCounterValue(counterMinValue)
   }
 
   const callSettingsMenu = () => {
-    console.log(counterValue)
+    window.location.assign('/settings/');
+  }
+
+  const callCounter = () => {
+    window.location.assign('/counter/');
   }
 
   const changeCounterMinValue = (value: number) => {
     if (value >= 0) {
       setMinValue(value);
+      localStorage.setItem('counterMinValue', value + '')
     }
-
   }
 
   const changeCounterMaxValue = (value: number) => {
     if (value >= 0) {
       setCounterMaxValue(value);
+      localStorage.setItem('counterMaxValue', value + '')
     }
   }
 
 
-
-
   return (
-    <div className='appContainer'>
-      {/*<Counter counterValue={counterValue}*/}
-      {/*         counterMinValue={counterMinValue}*/}
-      {/*         counterMaxValue={counterMaxValue}*/}
-      {/*         changeCounterValue={changeCounterValue}*/}
-      {/*         resetCounterValue={resetCounterValue}*/}
-      {/*         callSettingsMenu={callSettingsMenu}*/}
-      {/*/>*/}
-      <Settings counterValue={counterValue}
-                counterMinValue={counterMinValue}
-                counterMaxValue={counterMaxValue}
-                changeCounterValue={changeCounterValue}
-                resetCounterValue={resetCounterValue}
-                callSettingsMenu={callSettingsMenu}
-                changeCounterMinValue={changeCounterMinValue}
-                changeCounterMaxValue={changeCounterMaxValue}
-      />
-    </div>
+    <BrowserRouter>
+      <div className='appContainer'>
+        <Route exact path="/">
+          <Redirect to="/counter"/>
+        </Route>
+        <Route path={'/counter'} render={() => <Counter counterValue={counterValue}
+                                                        counterMinValue={counterMinValue}
+                                                        counterMaxValue={counterMaxValue}
+                                                        changeCounterValue={changeCounterValue}
+                                                        resetCounterValue={resetCounterValue}
+                                                        callSettingsMenu={callSettingsMenu}
+        />}/>
+
+        <Route path={'/settings'} render={() => <Settings counterValue={counterValue}
+                                                          counterMinValue={counterMinValue}
+                                                          counterMaxValue={counterMaxValue}
+                                                          changeCounterValue={changeCounterValue}
+                                                          resetCounterValue={resetCounterValue}
+                                                          callSettingsMenu={callSettingsMenu}
+                                                          callCounter={callCounter}
+                                                          changeCounterMinValue={changeCounterMinValue}
+                                                          changeCounterMaxValue={changeCounterMaxValue}
+        />}/>
+      </div>
+    </BrowserRouter>
   )
 }
 
