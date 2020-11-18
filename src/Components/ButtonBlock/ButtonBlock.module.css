@@ -1,3 +1,11 @@
+.buttonBlock {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin-top: 10%;
+
+}
+
 .btn {
     color: #0C1B1F;
     background-color: #61DAFB;
@@ -7,7 +15,9 @@
 }
 
 .disabledBtn {
+    cursor: not-allowed;
     pointer-events: none;
+    background-color: #FE0000;
 }
 
 .btn:hover {

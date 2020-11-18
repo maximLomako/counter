@@ -1,36 +1,33 @@
 import React from "react";
-import {Display} from "./Display/Display";
-import {Button} from "../Button/Button";
+import Display from "../Display/Display";
 import s from './Counter.module.css'
+import ButtonBlock from "../ButtonBlock/ButtonBlock";
 
 type CounterPropsType = {
   counterValue: number
+  counterMinValue: number
+  counterMaxValue: number
   changeCounterValue: () => void
   resetCounterValue: () => void
+  callSettingsMenu: () => void
 }
 
+const Counter: React.FC<CounterPropsType> = (props) => {
 
-const Counter = (props: CounterPropsType) => {
   return (
-    <>
-      <Display counterValue={props.counterValue}/>
-      <div className={s.buttonBlock}>
-        <Button
-          className={props.counterValue >= 5 ? `${s.btn} ${s.btnDisabled}` : `${s.btn}`}
-          title='inc'
-          onClick={props.changeCounterValue}/>
-
-        <Button className={s.btn}
-                title='reset'
-                onClick={props.resetCounterValue}/>
-
-        <Button className={s.btn}
-                title='set'
-                onClick={() => {console.log('set')}}/>
-      </div>
-
-
-    </>
+    <div className={s.counter}>
+      <Display counterValue={props.counterValue}
+               counterMaxValue={props.counterMaxValue}
+      />
+      <ButtonBlock
+        counterValue={props.counterValue}
+        counterMinValue={props.counterMinValue}
+        counterMaxValue={props.counterMaxValue}
+        changeCounterValue={props.changeCounterValue}
+        resetCounterValue={props.resetCounterValue}
+        callSettingsMenu={props.callSettingsMenu}
+      />
+    </div>
   )
 }
 

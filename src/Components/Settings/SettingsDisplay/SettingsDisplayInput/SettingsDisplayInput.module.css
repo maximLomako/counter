@@ -1,0 +1,32 @@
+.settingsDisplayInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.settingsDisplayInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.settingsDisplayInputTitle{
+    font-size: 20px;
+}
+
+.settingsDisplayInputTitleError{
+    color: #FE0000;
+}
+
+.settingsDisplayInputArea{
+    height: 20px;
+    border: 3px solid #61DAFB ;
+}
+
+.settingsDisplayInputAreaError{
+    height: 20px;
+    background: #FF7B7C;
+    border: 3px solid #FE0000 ;
+}

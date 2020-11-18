@@ -1,16 +1,23 @@
 import React from "react";
+import s from './Button.module.css'
 
 type ButtonPropsType = {
+  buttonTitleValue: string
+  counterValue: number
+  counterMinValue: number
+  counterMaxValue: number
   className: string
-  title: string
   onClick: () => void
+
 }
 
-export const Button: React.FC<ButtonPropsType> = (props) => {
+const Button: React.FC<ButtonPropsType> = ({
+                                             counterValue, counterMinValue,
+                                             counterMaxValue, buttonTitleValue, className, onClick
+                                           }) => {
   return (
-    <div className={props.className}
-         onClick={props.onClick}>
-      {props.title}
-    </div>
+    <div className={className} onClick={onClick}>{buttonTitleValue}</div>
   )
 }
+
+export default Button;

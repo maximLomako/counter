@@ -1,0 +1,18 @@
+.display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 140px;
+    font-weight: bold;
+    color: #FFFFFF;
+    height: 70%;
+    width: 70%;
+    border: 15px solid #00CBF7;
+    border-radius: 100%;
+    transition: all 1s;
+}
+
+.redDisplay {
+    color: #FE0000;
+    border: 15px solid #FE0000;
+}

@@ -1,28 +1,27 @@
-.optionBlock{
+.settings {
+    width: 70%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    border: 5px solid cyan;
-    border-radius: 10%;
-    width: 70%;
-    height: 30%;
-    margin-bottom: 10%;
+}
 
-}
-.buttonBlock {
-    display: flex;
-    justify-content: center;
-    width: 60%;
-    border: 5px solid cyan;
-    border-radius: 5%;
-    padding: 7%;
-}
 .btn {
-    color: slategrey;
-    background: cyan;
-    padding: 5%;
-    border-radius: 5%;
-    font-size: 24px;
+    color: #0C1B1F;
+    background-color: #61DAFB;
+    padding: 5px 10px;
+    border-radius: 10%;
+    transition: color .5s;
+}
+
+.disabledBtn {
+    pointer-events: none;
+}
+
+.btn:hover {
+    transition: all .5s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
     cursor: pointer;
 }

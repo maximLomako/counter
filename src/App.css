@@ -1,20 +1,18 @@
 body {
-  background: slategrey;
+  background: #282C34;
 }
 
-.App {
+.appContainer {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  margin: 0 auto;
+  height: 500px;
+  width: 500px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  width: 70%;
-  border: 5px solid cyan;
-  border-radius: 10%;
 }
 
 

@@ -1,0 +1,13 @@
+.settingsDisplay {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    font-size: 140px;
+    font-weight: bold;
+    color: #FFFFFF;
+    height: 70%;
+    width: 80%;
+    border: 15px solid #00CBF7;
+    transition: all 1s;
+}
