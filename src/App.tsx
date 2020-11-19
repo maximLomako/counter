@@ -14,6 +14,7 @@ function App() {
   let [counterMinValue, setMinValue] = useState(getDataFromLocalStorage('counterMinValue'));
   let [counterMaxValue, setCounterMaxValue] = useState(getDataFromLocalStorage('counterMaxValue'));
   let [counterValue, setCounterValue] = useState(counterMinValue);
+  let [flag, setFlag] = useState(false);
 
 
   const changeCounterValue = () => {
@@ -25,11 +26,13 @@ function App() {
   }
 
   const callSettingsMenu = () => {
-    window.location.assign('/settings/');
+    // window.location.assign('/settings/');
+    setFlag(true);
   }
 
   const callCounter = () => {
-    window.location.assign('/counter/');
+    // window.location.assign('/counter/');
+    setFlag(false);
   }
 
   const changeCounterMinValue = (value: number) => {
@@ -47,30 +50,31 @@ function App() {
   }
 
 
+
   return (
     <BrowserRouter>
       <div className='appContainer'>
-        <Route exact path="/">
-          <Redirect to="/counter"/>
-        </Route>
-        <Route path={'/counter'} render={() => <Counter counterValue={counterValue}
-                                                        counterMinValue={counterMinValue}
-                                                        counterMaxValue={counterMaxValue}
-                                                        changeCounterValue={changeCounterValue}
-                                                        resetCounterValue={resetCounterValue}
-                                                        callSettingsMenu={callSettingsMenu}
-        />}/>
+        {/*<Route exact path="/">*/}
+        {/*  <Redirect to="/counter"/>*/}
+        {/*</Route>*/}
+        {!flag ? <Route path={'/'} render={() => <Counter counterValue={counterValue}
+                                                         counterMinValue={counterMinValue}
+                                                         counterMaxValue={counterMaxValue}
+                                                         changeCounterValue={changeCounterValue}
+                                                         resetCounterValue={resetCounterValue}
+                                                         callSettingsMenu={callSettingsMenu}
+        />}/> : <Route path={'/settings'} render={() => <Settings counterValue={counterValue}
+                                                                  counterMinValue={counterMinValue}
+                                                                  counterMaxValue={counterMaxValue}
+                                                                  changeCounterValue={changeCounterValue}
+                                                                  resetCounterValue={resetCounterValue}
+                                                                  callSettingsMenu={callSettingsMenu}
+                                                                  callCounter={callCounter}
+                                                                  changeCounterMinValue={changeCounterMinValue}
+                                                                  changeCounterMaxValue={changeCounterMaxValue}
+        />}/>}
 
-        <Route path={'/settings'} render={() => <Settings counterValue={counterValue}
-                                                          counterMinValue={counterMinValue}
-                                                          counterMaxValue={counterMaxValue}
-                                                          changeCounterValue={changeCounterValue}
-                                                          resetCounterValue={resetCounterValue}
-                                                          callSettingsMenu={callSettingsMenu}
-                                                          callCounter={callCounter}
-                                                          changeCounterMinValue={changeCounterMinValue}
-                                                          changeCounterMaxValue={changeCounterMaxValue}
-        />}/>
+
       </div>
     </BrowserRouter>
   )
