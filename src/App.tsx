@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import './App.css';
 import Counter from "./Components/Counter/Counter";
 import Settings from "./Components/Settings/Settings";
-import {BrowserRouter, Route, Redirect} from "react-router-dom";
 
 function App() {
 
@@ -50,33 +49,27 @@ function App() {
   }
 
 
-
   return (
-    <BrowserRouter>
-      <div className='appContainer'>
-        {/*<Route exact path="/">*/}
-        {/*  <Redirect to="/counter"/>*/}
-        {/*</Route>*/}
-        {!flag ? <Route path={'/'} render={() => <Counter counterValue={counterValue}
-                                                         counterMinValue={counterMinValue}
-                                                         counterMaxValue={counterMaxValue}
-                                                         changeCounterValue={changeCounterValue}
-                                                         resetCounterValue={resetCounterValue}
-                                                         callSettingsMenu={callSettingsMenu}
-        />}/> : <Route path={'/settings'} render={() => <Settings counterValue={counterValue}
-                                                                  counterMinValue={counterMinValue}
-                                                                  counterMaxValue={counterMaxValue}
-                                                                  changeCounterValue={changeCounterValue}
-                                                                  resetCounterValue={resetCounterValue}
-                                                                  callSettingsMenu={callSettingsMenu}
-                                                                  callCounter={callCounter}
-                                                                  changeCounterMinValue={changeCounterMinValue}
-                                                                  changeCounterMaxValue={changeCounterMaxValue}
-        />}/>}
 
+    <div className='appContainer'>
+      {!flag ? <Counter counterValue={counterValue}
+                        counterMinValue={counterMinValue}
+                        counterMaxValue={counterMaxValue}
+                        changeCounterValue={changeCounterValue}
+                        resetCounterValue={resetCounterValue}
+                        callSettingsMenu={callSettingsMenu}
+      /> : <Settings counterValue={counterValue}
+                     counterMinValue={counterMinValue}
+                     counterMaxValue={counterMaxValue}
+                     changeCounterValue={changeCounterValue}
+                     resetCounterValue={resetCounterValue}
+                     callSettingsMenu={callSettingsMenu}
+                     callCounter={callCounter}
+                     changeCounterMinValue={changeCounterMinValue}
+                     changeCounterMaxValue={changeCounterMaxValue}
+      />}
 
-      </div>
-    </BrowserRouter>
+    </div>
   )
 }
 
