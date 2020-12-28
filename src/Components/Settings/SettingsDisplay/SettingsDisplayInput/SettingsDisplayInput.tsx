@@ -19,7 +19,9 @@ const SettingsDisplayInput: React.FC<SettingsDisplayInputPropsType> = (props) =>
   return (
     <div className={s.settingsDisplayInput}>
       <h3 className={props.counterMinValue >= props.counterMaxValue ?  `${s.settingsDisplayInputTitle} ${s.settingsDisplayInputTitleError}`
-        : `${s.settingsDisplayInputTitle}`}>{props.title}</h3>
+        : `${s.settingsDisplayInputTitle}`}>
+        {props.title}
+      </h3>
       <input onChange={onChangeHandler}
         type="number"
              className={props.counterMinValue >= props.counterMaxValue ?  `${s.settingsDisplayInputArea} ${s.settingsDisplayInputAreaError}`

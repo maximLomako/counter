@@ -31,6 +31,7 @@ function App() {
 
   const callCounter = () => {
     // window.location.assign('/counter/');
+    setCounterValue(counterMinValue);
     setFlag(false);
   }
 
